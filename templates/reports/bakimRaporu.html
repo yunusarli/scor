@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/tableExport.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF/jspdf.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/tableexport.jquery.plugin@1.10.21/libs/jsPDF-AutoTable/jspdf.plugin.autotable.js"></script>
+
+    <script src="https://use.fontawesome.com/8e2a5cc178.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+    <script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>-->
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/bakimRapor.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    <title>Bakim Rapor | ScoR</title>
+</head>
+<body >
+  
+  <div class="row">
+      
+
+  </div>
+  </div>
+   <!-- navbarın arkasında renk tonu degisecek kısım -->
+  <div class="bg-blue container-fluid"></div>
+  <div class="bg-green container-fluid d-none"></div>
+  <div class="bg-yellow container-fluid d-none"></div>
+   <!-- navbar baslangıc-->
+  {% include 'base.html' %}
+ <!-- navbar bitis-->
+ <div class="row p-row">
+      <div class="box ml-auto mt-2">
+          <div class="row">
+            <div class="alll ml-auto mr-4 mt-2">
+                <div class="row">
+                         <!-- no/id input (rapor getir)-->
+            <form action="" method="post">
+                {% csrf_token %}
+                <input class="rapor-work-input ml-3" placeholder="Rapor ID giriniz" name="rapor_id">
+                <button type="submit" class="rapor-work"><i class="fa-solid fa-clipboard"></i> Raporu Getir</button>
+            </form>
+            </div>
+          </div>
+          <div class="all-choose ml-auto ">
+              <div class="row">
+          
+              <div class="all ml-auto mt-2">
+                  <div class="row">
+                 
+                         <!-- no/id input rapor (çalıştır)-->
+                        <form action="" method="post">
+                          {% csrf_token %}
+                            <input class="rapor-work-input ml-3" placeholder="Saha No/ID giriniz" name="saha_no">
+                            <button type="submit" class="rapor-work"><i class="fa-solid fa-sliders"></i> Rapor Çalıştır </button>
+                        </form>
+            </div>
+            </div>
+        </div>
+            </div>
+          </div>
+      </div>
+    </div>
+    <!--
+    <div class="container">
+      <div class="row">
+          <p class="w mx-auto">RAPORU ÇALIŞTIRIN <img class="s-gif" src="https://thumbs.gfycat.com/BountifulPalatableHerring-max-1mb.gif" style="width: 90px; margin-top:-35px;position: absolute; opacity: 0.2;"></p>
+      </div>
+    </div>
+    -->
+
+<div class="row">
+<div class="container-fluid fh">
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- tablo seçim -->
+      <button  class="t2 sayim_tab table_button">Bakım Envanter</button> <i class="fa-solid fa-angle-right mt-2 mx-2"></i> <button  class="t1 scor_tab tab">Sayım Sonuc Raporu</button>
+    </div>
+  </div>
+
+         <!-- excel pdf butonlar 
+    {% if rapor_id %}
+      <a href="{% url 'reports:export' rapor_id%}" target="_blank" rel="noopener noreferrer"> <button id="exportButton"><img src="https://cdn.iconscout.com/icon/free/png-256/microsoft-excel-2081997-1756310.png" style="width: 30px;"> excel</button></a>
+    {% else %}
+      <button id="exportButton"><img src="https://cdn.iconscout.com/icon/free/png-256/microsoft-excel-2081997-1756310.png" style="width: 30px;"> excel</button>    
+    {% endif %}
+
+  <button id="exportButtonn" class="btn btn-lg btn-danger clearfix"><span class="fa fa-file-pdf-o"></span> Export to PDF</button>
+    -->
+  <div class="row mt-4">
+<div class="col mx-auto">
+
+  <div class="tab-content mx-auto" id="myTabContent">
+
+    <div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+    
+      <div class="col-md-12">
+        <input type="hidden" value="{{rapor_id}}" id="rapor_id_hidden">
+        <div class="container-fluid">
+          <div class="col mx-auto">
+            <div class="row">
+              <div class="sag col ml-auto">
+                <div class="row">
+                  <div class="ml-auto  mx-1">
+                    <!-- satır ekle -->
+                    <button  data-placement="top" title="Satır Ekle" data-toggle="modal" data-target="#exampleModal" class="btn-add  ml-auto jl" id="satir_ekle">  <i class="fa-solid fa-circle-plus"></i></button>
+                    <!-- satır sil -->
+                    <button data-placement="top" title="Satır Sil" data-toggle="modal"  data-target="#exampleModal1" id="satir_sil" class="btn-del  jl "> <i class="fa-solid fa-circle-minus"></i></button>
+                    <!-- onayla -->
+                    <button onclick="aktifmahmut1Btn()"   title="Onayla" class="btn-add  ml-auto jl" ><i class="fa-solid fa-square-check"></i></button>
+                    <!-- reddet -->
+                    <button onclick="aktifmahmut2Btn()"    title="Reddet" class="btn-del  jl "><i class="fa-solid fa-rectangle-xmark"></i></button>
+                    <!-- mail gönder -->
+                    <button type="button" data-toggle="modal" title="Mail Gönder" data-target="#exampleModal3" class="btn-add  ml-auto jl" id="test" disabled><i class="fa-solid fa-envelope"></i></button>
+                    <!-- kaydet -->
+                    <button data-placement="top" title="Kaydet" type="button" class="btn-save jl " placeholder="" aria-controls="dt-basic_2" id="save_all_2"><i class="fa-solid fa-floppy-disk"></i></button> 
+                  </div>
+                  <button class="btn-update mx-3 btn-outline-dark mr-4" id="sonuc_rapor_olustur" type="submit"><img src="https://cdn.discordapp.com/attachments/880812531302666320/957604544097955861/dfgg.png" style="width: 41px;margin-left:-43px;margin-top:-10px; position: absolute;"> Raporu Güncelle</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      <!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Satır Ekle</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div id="left">
+
+          <form class="input">
+            <div class="row">
+            <div class="row mt-2 mx-auto">
+              Seri No: <input class="mx-4" type="text" id="seri"><br>
+            </div>
+              <div class="row mt-2 mx-auto">
+              Parça Kodu: <input class="mx-4" type="text" id="ad"><br>
+            </div>
+            <div class="row mt-2 mx-auto">
+              Parça Tanımı: <input class="mx-4" type="tel" id="soyad"><br>
+            </div>
+            <div class="row mt-2 mx-auto">
+              Quantity: <input class="mx-4" type="email" id="yas"><br>
+            </div>
+            <div class="row mt-2 mx-auto">
+              Sayım: <input class="mx-4"  type="email" id="sayım"><br>
+            </div>
+              <div class="row mt-2 mx-auto">
+              Açıklama: <input class="mx-4"  type="email" id="açıklama"><br>
+            </div>
+          </div>
+          </form>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+        <button type="button"  value="Add" id="add_satir" class="btn btn-primary">Ekle</button>
+      </div>
+    </div>
+  </div>
+</div>
+     <!-- Modal1 -->
+     <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Satır Sil</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <div id="left">
+    
+              <form class="input">
+                <div class="row">
+                <div class="row mt-2 mx-auto">
+                  Silincek Satır: <input class="mx-4" type="text" id="silinecek_satir"><br>
+                </div>
+              </div>
+              </form>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+            <button type="button"  value="Delete" id="ekle" class="btn btn-primary delete_satir_btn">Sil</button>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- mail gönderme popup-3 -->
+      <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Mail Gönder</h5> <!-- tıklanınca mail gonderılecek -->
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div id="left">
+      
+                <form class="input">
+               
+                    <form>
+                      <div class="form-group">
+                        <label for="exampleFormControlInput1">Email address</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                      </div>
+              
+                      <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Gönderilecek Mesaj</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                      </div>
+                    </form>
+        
+            
+                </form>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+              <button type="button"  value="Add" id="ekle" class="btn btn-primary send_email">Gönder</button>
+            </div>
+          </div>
+        </div>
+      </div>
+     <table class="tab_table" style="display: none;">
+       <thead>
+         <tr>
+           <th>Ref-1</th>
+           <th>Ref-2</th>
+           <th>Ref-3</th>
+           <th>Ref-4</th>
+           <th>Ref-5</th>
+           <th>Ref-5</th>
+           <th>Ref-6</th>
+           <th>Ref-Grup</th>
+           <th>Ref-Sonuc</th>
+           <th>Ref-Kategori</th>
+           <th>Ref-Sorgu No</th>
+           <th>Ref-Açıklama</th>
+         </tr>
+       </thead>
+       <tbody>
+         {% for scor in scor_listesi %}
+          <tr>
+            <td>{{ scor.ref_1 }}</td>
+            <td>{{ scor.ref_2 }}</td>
+            <td>{{ scor.ref_3 }}</td>
+            <td>{{ scor.ref_4 }}</td>
+            <td>{{ scor.ref_5 }}</td>
+            <td>{{ scor.ref_6 }}</td>
+            <td>{{ scor.ref_grup }}</td>
+            <td>{{ scor.sonuc }}</td>
+            <td>{{ scor.kategori }}</td>
+            <td>{{ scor.sorgu_no }}</td>
+            <td>{{scor.aciklama}}</td>
+          </tr>
+         {% endfor %}
+       </tbody>
+     </table>
+        
+              <div class="gd mt-4 table_for_sayim">
+                       <!-- id kutusu -->
+                <div class="sol col-md-3 mr-auto"> <p class="id" data-id="{{rapor_id}}"><i class="fa-solid fa-file-invoice mx-2"></i> id = {{rapor_id}}</p> </div>
+            <!-- tablo baslangıc -->
+                  
+                <table 
+                  id="table"
+                  data-toolbar="#toolbar"
+                  data-show-refresh="true"
+                  data-show-toggle="true"
+                  data-show-fullscreen="true"
+                  data-show-columns="true"
+                  data-show-columns-toggle-all="true"
+                  data-detail-view="true"
+                  data-show-export="true"              
+                  data-click-to-select="true"
+                  data-detail-formatter="detailFormatter"
+                  data-minimum-count-columns="2"
+                  data-show-pagination-switch="true"
+                  data-pagination="true"
+                  data-page-list="[10, 25, 50, 100, all]"
+                  data-show-footer="true"
+                  data-filter-control="true"    
+                  data-response-handler="responseHandler">
+                  <thead>
+                    <tr >
+                      <th data-field="seri" data-sortable="true" data-filter-control="input">Seri No</th>
+                      <th data-field="name" data-sortable="true" data-filter-control="input">Parça Kodu</th>
+                      <th data-field="price" data-sortable="true" data-filter-control="input">Parça Tanımı</th>
+                      <th data-field="saha" data-sortable="true" data-filter-control="input">Quantity</th>
+                      <th data-field="sahaa" data-sortable="true" data-filter-control="select">Sayım</th>
+                      <th data-field="sahaaa" data-sortable="true" data-filter-control="input">Açıklama</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <!-- parca kodu özellikleri popup -->
+<div class="modal fade" id="parca" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Parça Kodu</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="row mx-3">
+          özellik 1
+        </div>
+        <div class="row mx-3">
+          özellik 2
+        </div>
+        <div class="row mx-3">
+          özellik 3  
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Kapat</button>
+      </div>
+    </div>
+  </div>
+</div>
+                    {% for envanter in envanterler %}
+                      <tr>
+                        <th class="th">{{envanter.seri_no}}</th>          
+                        <td class="th id_keeper" data-id="{{envanter.id}}"><a data-toggle="modal" data-target="#parca" class="ink" href="">{{envanter.parca_kodu}}</a></td>
+                        <td class="th">{{envanter.parca_tanimi}}</td>     
+                        <th class="th">{{envanter.quantity}}</th>          
+                        <td class="th"><input class="i count_keeper" placeholder="sayım" value="{{envanter.sayim}}"></td>
+                        <td class="th"><input class="i description_keeper" placeholder="açıklama" value="{{envanter.aciklama}}"></td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+                       <!-- mail açılması için onaylandı onaylanmadı -->
+<script>
+
+  function aktifmahmut1Btn() {
+      document.getElementById("test").
+  disabled = false;
+  }
+  
+  function aktifmahmut2Btn() {
+      document.getElementById("test").
+  disabled = false;
+  } 
+  
+</script>
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
+
+<script></script>
+<!-- pdf buton -->
+<script type="text/javascript">
+        jQuery(function ($) {
+            $("#exportButtonn").click(function () {
+                // parse the HTML table element having an id=exportTable
+                var dataSource = shield.DataSource.create({
+                    data: "#table",
+                    schema: {
+                        type: "table",
+                        fields: {
+                        
+    ParçaKodu: { type: String },
+    ParçaTanımı: { type: String },
+    quantity: { type: String },
+    sayım: { type: String },
+    açıklama: { type: String },
+    
+                        }
+                    }
+                });
+    
+                // when parsing is done, export the data to PDF
+                dataSource.read().then(function (data) {
+                    var pdf = new shield.exp.PDFDocument({
+                        author: "PrepBootstrap",
+                        created: new Date()
+                    });
+    
+                    pdf.addPage("a4", "portrait");
+    
+                    pdf.table(
+                        50,
+                        50,
+                        data,
+                        [
+                          
+    { field: "ParçaKodu", title: "Parca Kodu", width: 75 },
+    { field: "ParçaTanımı", title: "Parca Tanimi", width: 120 },
+                            { field: "quantity", title: "quantity", width: 75 },
+    { field: "sayım", title: "sayım", width: 75 },
+    { field: "açıklama", title: "açıklama", width: 75 },
+
+                        ],
+                        {
+                            margins: {
+                                top: 50,
+                                left: 50
+                            }
+                        }
+                    );
+    
+                    pdf.saveAs({
+                        fileName: "PrepBootstrapPDF"
+                    });
+                });
+            });
+        });
+</script>
+                <!-- you need to include the shieldui css and js assets in order for the components to work -->
+<link rel="stylesheet" type="text/css" href="http://www.shieldui.com/shared/components/latest/css/light/all.min.css" />
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/shieldui-all.min.js"></script>
+<script type="text/javascript" src="http://www.shieldui.com/shared/components/latest/js/jszip.min.js"></script>
+   <!-- excel buton -->
+   <script type="text/javascript">
+    jQuery(function ($) {
+        $("#exportButton").click(function () {
+            // parse the HTML table element having an id=exportTable
+            var dataSource = shield.DataSource.create({
+                data: "#table",
+                schema: {
+                    type: "table",
+                    fields: {
+               
+     ParçaKodu: { type: String },
+     ParçaTanımı: { type: String },
+     Quantity: { type: String },
+     Sayım: { type: String },
+     Açıklama: { type: String },
+   
+                    }
+                }
+            });
+
+            // when parsing is done, export the data to Excel
+            dataSource.read().then(function (data) {
+                new shield.exp.OOXMLWorkbook({
+                    author: "PrepBootstrap",
+                    worksheets: [
+                        {
+                            name: "PrepBootstrap Table",
+                            rows: [
+                                {
+                                    cells: [
+                                        {
+
+                                            style: {
+                                                bold: true
+                                            },
+                                            type: String,
+                                            value: "Parça Kodu"
+                                        },
+              {
+                                            style: {
+                                                bold: true
+                                            },
+                                            type: String,
+                                            value: "Parça Tanımı"
+                                        },
+              {
+                                            style: {
+                                                bold: true
+                                            },
+                                            type: String,
+                                            value: "Quantity"
+                                        },
+              {
+                                            style: {
+                                                bold: true
+                                            },
+                                            type: String,
+                                            value: "Sayım"
+                                        },
+              {
+                                            style: {
+                                                bold: true
+                                            },
+                                            type: String,
+                                            value: "Açıklama"
+                                        }
+              
+                                     
+                                    ]
+                                }
+                            ].concat($.map(data, function(item) {
+                                return {
+                                    cells: [
+                                     
+              { type: String, value: item.ParçaKodu },
+              { type: String, value: item.ParçaTanımı },
+              { type: String, value: item.Quantity },
+              { type: String, value: item.Sayım },
+              { type: String, value: item.Açıklama },
+            
+                                    ]
+                                };
+                            }))
+                        }
+                    ]
+                }).saveAs({
+                    fileName: "PrepBootstrapExcel"
+                });
+            });
+        });
+    });
+</script>
+
+<style>
+          #exportButton {
+                  
+                  position: absolute;
+                  margin-top: 8px;
+                  border: none;
+                  margin-left: 18px;
+                  border-radius: 5px;
+                  background: rgb(53, 190, 34);
+                  color: white;
+                  padding-left: 20px;
+                  padding-right: 20px;
+                  height: 42px;
+                  z-index: 9;
+                  padding-top: 7px;
+                  padding-bottom: 7px;
+                  font-size: 19px;
+                  margin-left: 35px;
+              }
+    #exportButtonn {
+
+position: absolute;
+margin-top: 8px;
+border: none;
+border-radius: 5px;
+background: rgb(173, 34, 34);
+color: white;
+padding-left: 20px;
+padding-right: 20px;
+z-index: 9;
+padding-top: 7px;
+padding-bottom: 7px;
+font-size: 19px;
+margin-left: 165px;
+}
+
+</style>
+                <style>
+                  .container {
+	width: 1024px;
+	padding: 2em;
+}
+
+.bold-blue {
+	color: #ffffff;
+  background: rgb(153, 169, 194);
+}
+                </style>
+            <script>
+              //exporte les données sélectionnées
+var $table = $('#table');
+    $(function () {
+        $('#toolbar').find('select').change(function () {
+            $table.bootstrapTable('refreshOptions', {
+                exportDataType: $(this).val()
+            });
+        });
+    })
+
+		var trBoldBlue = $("table");
+
+	$(trBoldBlue).on("click", "tr", function (){
+			$(this).toggleClass("bold-blue");
+	});
+            </script>
+          
+                </table>
+                <script>
+                  const sdf=document.querySelector("#sdf");
+                  const ad=document.querySelector("#ad");
+                  const soyad=document.querySelector("#soyad");
+                  const yas=document.querySelector("#yas");
+                  const sayım=document.querySelector("#sayım");
+                  const açıklama=document.querySelector("#açıklama");
+                  const ekle=document.querySelector("#ekle");//tıklama olayı eklenecek
+                  const table=document.querySelector("#table");
+               
+                  ekle.onclick=function(){
+                    //butona tıklanınca çalıştırılacak
+                    
+                    //td elementlerini oluşturuyoruz
+                    let t=document.createElement("td");
+                    let tAd=document.createElement("td");
+                    let tSoyad=document.createElement("td");
+                    let tYas=document.createElement("td");
+                    let tSayım=document.createElement("td");
+                    let tAçıklama=document.createElement("td");
+               
+                    tAd.textContent=ad.value;//textboxtan değeri okuyup aktarıyoruz.
+                    tSoyad.textContent=soyad.value;//textboxtan değeri okuyup aktarıyoruz.
+                    tYas.textContent=yas.value;//textboxtan değeri okuyup aktarıyoruz.
+                    tSayım.textContent=sayım.value;
+                    tAçıklama.textContent=açıklama.value;
+               
+                    //tr elementi oluşturuyoruz
+                    let tr=document.createElement("tr");
+               
+                    //tdleri tr içine ekliyoruz
+                    tr.appendChild(t);
+                    tr.appendChild(tAd);
+                    tr.appendChild(tSoyad);
+                    tr.appendChild(tYas);
+                    tr.appendChild(tSayım);
+                    tr.appendChild(tAçıklama);
+               
+                    //tr elementini liste (tablo) içine ekliyoruz
+                    table.appendChild(tr);
+               
+                    //nenelerin için eklemeden sonra temizleyelim
+                    ad.value="";
+                    soyad.value="";
+                    yas.value="";
+                    sayım.value="";
+                    açıklama.value="";
+               
+                    //temizlemeden sonra ad içine odaklansın
+                    ad.focus();
+                  }
+               
+                </script>
+                
+                <script>
+
+                  
+                  var table = document.getElementById('table');
+                  var selected = table.getElementsByClassName('selected');
+                  table.onclick = highlight;
+                  
+                  function highlight(e) {
+                  if (selected[0]) selected[0].className = '';
+                  e.target.parentNode.className = 'selected';
+                  }
+                  
+                  function fnselect(){
+                  var element = document.querySelectorAll('.selected');
+                  if(element[0]!== undefined){ //it must be selected
+                   alert(element[0].children[0].firstChild.data);
+                  }
+                  }
+                  </script>
+               </div>
+ 
+                             
+               <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+               <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+           
+              <style>
+                #personel {
+                border-collapse: collapse;
+                -webkit-box-shadow: 1px 2px 23px 5px rgba(0,0,0,0.29); 
+box-shadow: 1px 2px 23px 5px rgba(0,0,0,0.29);
+                width: 100%;
+                }
+                 
+                #personel td, #personel th {
+                border: 1px solid #ddd;
+                padding: 8px;
+                }
+                 
+                #personel tr:nth-child(even){background-color: #f2f2f2;}
+                 
+                #personel tr:hover {
+                background-color: #e2e2e2;
+                color:#fff;
+                }
+                 
+                .gd {
+                  border-collapse: collapse;
+    -webkit-box-shadow: 1px 2px 23px 5px rgb(0 0 0 / 29%);
+    box-shadow: 1px 2px 23px 5px rgb(0 0 0 / 29%);
+    width: 100%;
+    border-radius: 10px;
+                }
+                </style>
+               
+               
+               <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+               <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+               <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+               
+
+               
+         
+               <script>
+                 $(function() {
+                   $('#table').bootstrapTable()
+                 })
+               </script>
+
+
+
+</body>
+
+<script src="https://unpkg.com/scrollreveal@4.0.0/dist/scrollreveal.min.js"></script>
+<script src="{% static 'js/bakim_raporu.js' %}"></script>
+<script src="{% static 'js/tab.js' %}"></script>
+<script>window.sr = new ScrollReveal()
+
+	sr.reveal('.box', {
+		interval: 200,
+		scale: 0.85,
+		opacity: 0,
+	});
+	sr.reveal('', {
+		delay: 1000,
+    distance:600
+	})</script>
+</html>

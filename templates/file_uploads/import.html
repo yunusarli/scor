@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://use.fontawesome.com/8e2a5cc178.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+    <!--<link rel="stylesheet" type="text/css" href="extensions/filter-control/bootstrap-table-filter-control.css">
+    <script src="extensions/filter-control/bootstrap-table-filter-control.js"></script>-->
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/export.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+    <link rel="stylesheet" href="{% static 'css/popup.css' %}">
+    <title>Export | ScoR</title>
+</head>
+<body>
+  
+  <div class="popup">
+    <div class="close">
+      <span class="close_popup">&cross;</span>
+    </div>
+    
+    <div class="round">
+    </div>
+  </div>
+    <div class="row">
+        <div id="loader" class="container-fluid">
+          <div class="container-fluid bgg">
+              <div class="row">
+              <div class="lds-roller mx-auto"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+          </div>
+          </div>
+      </div>
+      </div>
+
+      <script>
+        setTimeout(function(){
+        $('.bgg').fadeToggle();
+        }, 0);
+        </script>
+           <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+           <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+           
+    <!-- navbarın arkasında renk tonu degisecek kısım -->
+    <div class="bg-blue container-fluid"></div>
+    <div class="bg-green container-fluid d-none"></div>
+    <div class="bg-yellow container-fluid d-none"></div>
+   <!-- navbar baslangıc-->
+  {% include 'base.html' %}
+ <!-- navbar bitis-->
+      <style>
+        body { background-color: #fff; color: #000; padding: 0; margin: 0; }
+        .container {  margin: auto; padding-top: 1em; }
+        .container .ism-slider { margin-left: auto; margin-right: auto; }
+        </style>
+        
+<link rel="stylesheet" href="{% static 'css/my-slider.css' %}"/>
+<script src="{% static 'js/ism-2.2.min.js' %}"></script>
+</head>
+<body>
+
+<div class="container mt-5">
+  <div class="row mx-5">
+    <div class="col g mx-auto">
+      <div class="row">
+        <button class="rapor-work mx-auto parca_kodu_update">Parça Kodu Güncelle</button>
+        <button class="rapor-work mx-auto saha_listesi_update">Saha listesi Güncelle</button>
+        <button class="rapor-work mx-auto">Global Rapor Güncelle</button>
+        <button class="rapor-workk mx-auto">xxx</button>
+        <button class="rapor-workkk mx-auto">xxx</button>
+        <button class="rapor-workkk mx-auto">xxx</button>
+      </div>
+    </div>
+  </div>
+</div>
+  <div class="row ">
+    <div class="choose   mx-auto mt-5">
+      <form action="">
+        <input class="edit" type="file" id="myFile" name="filename">
+      </form>
+    </div>
+  </div>
+  <button class="sorgu_list" style="display: none;">Sorgu List Yükle</button>
+  <button class="rapor_referanslari" style="display: none;">Rapor Referanslari Yükle</button>
+  <div class="alert message" style="display:none;">
+    
+  </div>
+  <div class="container ">
+  <div class="row mx-4">
+    <div class="col-md-3  texts mx-auto ">
+      <div class="row">
+        <button class="mx-auto ey-t envanter_upload">Envanter Yükle</button>
+      </div>
+      <div class="row">
+        <p class="mx-auto">title :<span class="t-text"> x </span></p>
+      </div>
+      <div class="row">
+        <p class="açıklama-text mx-auto">açıklama yazısı</p>
+      </div>
+      <div class="row">
+        <p class="mx-auto">title :<span class="t-text"> x </span></p>
+      </div>
+      <div class="row">
+        <p class="açıklama-text mx-auto">açıklama yazısı</p>
+      </div>
+
+    </div>
+
+    <div class="col-md-3 texts  mx-auto">
+      <div class="row">
+        <button class="mx-auto ey-t eht_seri_upload">EHT Seri Yükle</button>
+      </div>
+      <div class="row">
+        <p class="mx-auto">title :<span class="t-text"> x </span></p>
+      </div>
+      <div class="row">
+        <p class="açıklama-text mx-auto">açıklama yazısı</p>
+      </div>
+      <div class="row">
+        <p class="mx-auto">title :<span class="t-text"> x </span></p>
+      </div>
+      <div class="row">
+        <p class="açıklama-text mx-auto">açıklama yazısı</p>
+      </div>
+      
+    </div>
+    <div class="col-md-3 texts  mx-auto">
+      <div class="row">
+        <button class="mx-auto ey-t eht_sarf_upload">EHT Sarf Yükle</button>
+      </div>
+      <div class="row">
+        <p class="mx-auto">title :<span class="t-text"> x </span></p>
+      </div>
+      <div class="row">
+        <p class="açıklama-text mx-auto">açıklama yazısı</p>
+      </div>
+      <div class="row">
+        <p class="mx-auto">title :<span class="t-text"> x </span></p>
+      </div>
+      <div class="row">
+        <p class="açıklama-text mx-auto">açıklama yazısı</p>
+      </div>
+      
+    </div>
+  </div>
+</div>
+
+</body>
+<script src="{% static 'js/file_upload.js' %}"></script>
+<script src="{% static 'js/update_saha_parca.js' %}"></script>
+
+</html>

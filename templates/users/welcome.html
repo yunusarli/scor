@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="https://use.fontawesome.com/8e2a5cc178.js"></script>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+<script src="https://unpkg.com/bootstrap-table@1.19.1/dist/extensions/filter-control/bootstrap-table-filter-control.min.js"></script>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <link href="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/bootstrap-table@1.19.1/dist/bootstrap-table.min.js"></script>
+    <link rel="stylesheet" href="{% static 'css/welcome.css' %}">
+    <link rel="stylesheet" href="{% static 'css/loader.css' %}">
+ 
+   
+    
+    <title>Ana Sayfa | ScoR</title>
+</head>
+<body>
+ 
+    <div class="row">
+  <div id="loader" class="container-fluid">
+    <div class="container-fluid bgg">
+        <div class="row">
+        <div class="lds-roller mx-auto"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    </div>
+</div>
+</div>
+    <div class="bg container-fluid"></div>
+   <!-- navbar baslangıc-->
+  {% include 'base.html' %}
+ <!-- navbar bitis-->
+      
+
+    
+    <div class="container-fluid f">
+        <div class="row">
+        <div class="all mx-auto">
+            <div class="row">
+           
+            <div class="sol col mr-auto">
+    <div class="row ">
+        <p class="slogan mr-auto"><span class="essentials">Scor</span> Deneme Yazı.</p>
+    </div>
+
+    <div class="row ">
+        <div class="mini-slogan mr-auto">açıklama yazısı açıklama yazısı açıklama yazısı açıklama yazısı</div>
+    </div>
+ 
+   <div class="row mt-5 ">
+  <button class="panel-b"> <a href="{% url 'file_uploads:upload' %}" style="color: white;">Panele Git</a>  <i class="fa-solid fa-angles-right mx-2"></i></button>  
+
+   </div>
+   <div class="row">
+   <div class="card mt-5 mx-3" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title h-text"><i class="fa-solid fa-newspaper"></i> Haber Baslı</h5>
+      <h6 class="card-subtitle mb-2 text-muted h-açıklama">açıklama yazısı test</h6>
+      <p class="card-text h-açıklamaa">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    </div>
+    </div>
+
+    <div class="card mt-5 mx-3" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title h-text"><i class="fa-solid fa-newspaper"></i> Haber Baslık</h5>
+          <h6 class="card-subtitle mb-2 text-muted">açıklama yazısı test</h6>
+          <p class="card-text h-açıklamaa">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        </div>
+        </div>
+  </div>
+   <div class="row">
+    <div class="footer">
+        <div class="row d-none">
+        <p class="domain">www.scor-app.com</p>
+        <p class="numara">+999 999 999</p>
+   </div>
+</div>
+     </div>
+     
+    </div>
+    <div class="sag-two col ml-auto">
+      <img class="ml-auto " src="https://cdn.discordapp.com/attachments/880812531302666320/958099632582430750/webolizma-web-tasarim-nedir.png" width="600px">
+    </div>
+    <div class="sag col ml-auto">
+        <img class="ml-auto" src="https://cdn.discordapp.com/attachments/880812531302666320/958099632582430750/webolizma-web-tasarim-nedir.png" style="width: 700px;">
+    </div>
+    </div>
+
+</div>
+</div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" integrity="sha512-894YE6QWD5I59HgZOGReFYm4dnWc1Qt5NtvYSaNcOP+u1T9qYdvdihz0PPSiiqn/+/3e7Jo4EaG7TubfWGUrMQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+setTimeout(function(){
+$('.bgg').fadeToggle();
+}, 0);
+</script>
+</body>
+</html>

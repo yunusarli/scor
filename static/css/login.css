@@ -1,0 +1,126 @@
+body{
+    background: #3a7bd5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #3a6073, #3a7bd5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #3a6073, #3a7bd5); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+.bb{
+    -webkit-box-shadow: 1px 1px 14px 5px rgba(0,0,0,0.44); 
+box-shadow: 1px 1px 14px 5px rgba(0,0,0,0.44);
+border-radius: 15px;
+}
+.box{
+    margin-top: 170px;
+}
+@media only screen and (max-width: 766px) {
+    .box {
+        margin-top: 50px;
+    }
+  }
+input{
+    background: rgb(212, 212, 212);
+    border: none;
+    border-radius: 4px;
+    color: rgb(54, 54, 54);
+    font-size: 18px;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+    padding: 10px;
+    width: 90%;
+    outline: none;
+}
+.sol{
+    background: rgb(236, 236, 236);
+    border-radius: 0px;
+    padding: 30px;
+    height: 400px;
+    font-family: 'Poppins', sans-serif;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+@media only screen and (max-width: 766px) {
+    .sol {
+        border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    border-bottom-left-radius: 0px;
+    }
+  }
+.sag{
+    background: #56CCF2;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #2F80ED, #56CCF2);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #2F80ED, #56CCF2); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */    
+    border-radius: 0px;
+    padding: 30px;
+    font-family: 'Poppins', sans-serif;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+@media only screen and (max-width: 766px) {
+    .sag {
+        border-top-right-radius: 0px;
+        border-bottom-right-radius: 15px;
+        border-bottom-left-radius: 15px;
+    }
+  }
+.text{
+    color: rgb(44, 44, 44);
+    font-size: 35px;
+    font-weight: 900;
+    font-family: 'Poppins', sans-serif;
+}
+@media only screen and (max-width: 992px) {
+    .text {
+        font-size: 25px;
+    }
+  }
+.şifre{
+    font-size: 13px;
+    color: #373B44;
+    font-family: 'Poppins', sans-serif;
+}
+.baslık{
+font-size: 38px;
+color: white;
+font-weight: 900;
+margin-top: 75px;
+}
+@media only screen and (max-width: 766px) {
+    .baslık {
+        margin-top: -15px;
+    }
+  }
+.açıklama{
+    font-family: 'Poppins', sans-serif;
+font-size: 17px;
+margin-top: 30px;
+text-align: center;
+color: rgb(243, 243, 243);
+}
+.btnn{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 900;
+    border-radius: 9999px;
+    border: none;
+    color: white;
+    background: #373B44;  /* fallback for old browsers */
+background: -webkit-linear-gradient(to right, #4286f4, #373B44);  /* Chrome 10-25, Safari 5.1-6 */
+background: linear-gradient(to right, #4286f4, #373B44); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+padding-left: 50px;
+padding-right: 50px;
+padding-top: 10px;
+padding-bottom: 10px;
+font-size: 20px;
+transition: 0.1s;
+
+}
+.btnn:hover{
+    -moz-transform: scale(1.1);
+-webkit-transform: scale(1.1);
+-o-transform: scale(1.1);
+-ms-transform: scale(1.1);
+transform: scale(1.1);
+transition: 0.1s;
+}
+.btnn:focus{
+    outline: none;
+}

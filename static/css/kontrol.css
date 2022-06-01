@@ -1,0 +1,25 @@
+
+.controls-container{
+    width: 100%;
+    min-height: 300px;
+    background-color: rgba(255, 255, 255, 0.459);
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px 40px;
+    margin-left: 120px;
+}
+
+.controls-container .part{
+    width: 20%;
+    background-color: rgba(111, 88, 88, 0.338);
+    margin-left: 5px;
+    margin-bottom: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    height: 30px;
+}
+
+.controls-container .part:hover{
+    background-color: rgba(111, 88, 88, 0.638);
+}

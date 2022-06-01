@@ -1,0 +1,75 @@
+
+    <nav class="navbar mt-2 mx-auto navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="{% url 'users:home' %}"><img class="log" src="/static/images/logo-1.jpeg" width="50" height="20"></a>
+
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i class="fa-solid fa-align-right"></i>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+    
+            <div class="nav-item dropdown">
+              <a class="nav-link  dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                   Diğer
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item " href="#"></a>
+                <a class="dropdown-item " href="{% url 'reports:envanter_listesi' %}">Saha Envanter</a>
+                <a class="dropdown-item " href="#">xxxx Rapor</a>
+                <a class="dropdown-item " href="{% url 'file_uploads:upload' %}">Import Panel</a>
+                
+          </div>
+          </div>
+            <div class="nav-item dropdown">
+              <a class="nav-link" href="{% url 'reports:bakim_raporu' %}" id="navbar">
+                   Bakım Rapor
+              </a>
+    
+          </div>
+          <div class="nav-item ">
+            <a class="nav-link " href="{% url 'reports:kontrol_raporu' %}" id="navbar">
+              Kontrol Rapor
+            </a>
+    
+        </div>
+        <div class="nav-item ">
+          <a class="nav-link " href="{% url 'reports:eht' %}" id="navbar">
+           Envanter Tarihçesi
+          </a>
+    
+      </div>
+            <div class="nav-item ">
+              <a class="nav-link  " href="{% url 'parca_kodlari:saha_listesi' %}" id="navbar">
+                Saha Liste
+              </a>
+    
+          </div>
+          <div class="nav-item ">
+            <a class="nav-link" href="{% url 'parca_kodlari:parca_kodlari' %}" id="navbar">
+              Parça Kodu Liste
+            </a>
+    
+        </div>
+        </ul>
+        {% if user.is_authenticated %}
+            <div class="nav-item dropdown">
+              <a class="nav-link edg dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="fa-solid fa-circle-user"></i> Hoşgeldin ,<span class="nick"> {{user.username}} </span>        <!-- kullanıcıadı kısmı -->
+              </a>
+              <div class="dropdown-menu nickname-d-m" aria-labelledby="navbarDropdown">
+      
+                <a class="dropdown-item" href="{% url 'users:logout' %}"><i class="fa-solid fa-circle-arrow-left"></i> Çıkış Yap</a>        <!-- çıkış yapma butonu -->
+              </div>
+
+          </div>
+          {% else %}
+          <div class="nav-item ">
+            <a class="nav-link" href="{% url 'users:login' %}" id="navbar">
+              Login
+            </a>
+    
+        </div>
+        {% endif %}
+        </div>
+      </nav>
